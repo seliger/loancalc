@@ -2,16 +2,12 @@ import logging
 import atexit
 import sys
 
+import loancalc
 from loancalc.controller import LoanCalc
-
-APP_NAME = "Loan Calculator"
-APP_EXE_NAME = __package__
-APP_VERSION = "0.0.1"
-
 
 # Helper function to ensure we capture stack traces via logging
 # (Note: This method does not work with threads until Python 3.8)
-def log_excepthook(excType, excValue, traceback, logger=logging.getLogger()):
+def log_excepthook (excType, excValue, traceback, logger=logging.getLogger()):
     logging.error("Logging an uncaught exception",
                   exc_info=(excType, excValue, traceback))
 
@@ -19,7 +15,7 @@ def log_excepthook(excType, excValue, traceback, logger=logging.getLogger()):
 # Helper function to clean up and alert that we are ending runtime
 @atexit.register
 def shutdown():
-    logging.info(f"{APP_NAME} {APP_VERSION} - Shutting down...")
+    logging.info(f"{loancalc.APP_NAME} {loancalc.APP_VERSION} - Shutting down...")
 
 
 # Stub code to bootstrap environment and launch into main application
@@ -30,7 +26,7 @@ def run():
         format="%(asctime)s [%(name)s] [%(funcName)s] [%(levelname)s]  %(message)s",
         handlers=[
             logging.StreamHandler(sys.stderr),
-            logging.FileHandler("{0}/{1}.log".format("./", APP_EXE_NAME.lower()))
+            logging.FileHandler("{0}/{1}.log".format("./", loancalc.APP_EXE_NAME.lower()))
         ]
     )
 
@@ -38,7 +34,7 @@ def run():
     sys.excepthook = log_excepthook
 
     # Announce that we are starting up.
-    logging.info(f'{APP_NAME} {APP_VERSION} - Starting up...')
+    logging.info(f'{loancalc.APP_NAME} {loancalc.APP_VERSION} - Starting up...')
 
     # Launch into the main application run code
     LoanCalc.run()
