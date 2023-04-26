@@ -45,6 +45,7 @@ class MainAppWindow(tk.Tk):
         container = lcw.Container(row=0, column=0)
         container2 = lcw.Container(row=0, column=1)
 
+        # TODO: Fix this to do something else...
         self.frames = []
 
 
