@@ -2,6 +2,7 @@ import logging
 import tkinter as tk
 from tkinter import ttk
 import loancalc
+import loancalc.view.widgets as lcw
 
 # Instantiate our global logger
 logger = logging.getLogger(__name__)
@@ -41,12 +42,10 @@ class MainAppWindow(tk.Tk):
         self.grid_columnconfigure(1, minsize=(window_width - (window_width // 2.5)))
 
 
-        container = tk.Frame(self, relief=tk.GROOVE, bd=2)
-        container.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        container = lcw.Container(row=0, column=0)
+        container2 = lcw.Container(row=0, column=1)
 
-        container2 = tk.Frame(self, relief=tk.GROOVE, bd=2)
-        container2.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
+        self.frames = []
 
-        self.frames = {}
 
 
