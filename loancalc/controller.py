@@ -1,6 +1,5 @@
 
 import logging
-from loancalc import calculations
 import loancalc.view.windows as windows
 
 log = logging.getLogger(__name__)

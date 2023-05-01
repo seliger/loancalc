@@ -13,7 +13,7 @@ class Container(tk.Frame):
         logger.debug(f"{__class__.__name__}'s master: {self.master}")
 
     def generate_ui(self, widgets):
-        for cur_row, widget in enumerate(widgets):
+        for cur_loc, widget in enumerate(widgets):
             logger.info(f"Instantiating a {widget['widget']}")
             self.widgets[widget['name']] = widget['widget'](self,
                                                             text=widget['label'])
@@ -21,8 +21,8 @@ class Container(tk.Frame):
             if type(widget['widget']) is tk.Entry:
                 widget['widget'].config(textvariable=widget['value'])
 
-            self.widgets[widget['name']].grid(row=cur_row,
-                                              column=0,
+            self.widgets[widget['name']].grid(row=0,
+                                              column=cur_loc,
                                               sticky=widget.get('sticky', 'new'),
                                               padx=widget.get('padx', 20),
                                               pady=widget.get('pady', 20))
