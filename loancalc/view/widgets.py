@@ -21,8 +21,8 @@ class Container(tk.Frame):
             if type(widget['widget']) is tk.Entry:
                 widget['widget'].config(textvariable=widget['value'])
 
-            self.widgets[widget['name']].grid(row=0,
-                                              column=cur_loc,
+            self.widgets[widget['name']].grid(row=cur_loc,
+                                              column=0,
                                               sticky=widget.get('sticky', 'new'),
                                               padx=widget.get('padx', 20),
                                               pady=widget.get('pady', 20))

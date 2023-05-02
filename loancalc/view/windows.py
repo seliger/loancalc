@@ -85,7 +85,7 @@ class LoanConfigurationWindow(tk.Toplevel):
         center_y = screen_height // 2
 
         window_width = int(screen_width / 4)
-        window_height = int(screen_height / 4)
+        window_height = int(screen_height / 2)
 
         self.geometry('{}x{}+{}+{}'.format(
             window_width,
