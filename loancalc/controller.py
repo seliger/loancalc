@@ -1,16 +1,21 @@
-
 import logging
 import loancalc.view.windows as windows
+import loancalc.model.loan as loan
 
 log = logging.getLogger(__name__)
 
 
-class LoanCalc:
+class LoanCalcController:
+    def __init__(self):
+        pass
 
-    @staticmethod
-    def run():
 
+class LoanCalcApp:
+    views = {'main_window': windows.MainAppWindow()}
+    models = {}
+    controllers = {}
+
+    def __init__(self):
         # Bootstrap our main application window and kick off
         # the central event loop.
-        main_window = windows.MainAppWindow()
-        main_window.mainloop()
+        self.views['main_window'].mainloop()

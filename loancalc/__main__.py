@@ -3,7 +3,7 @@ import atexit
 import sys
 
 import loancalc
-from loancalc.controller import LoanCalc
+from loancalc.controller import LoanCalcApp
 
 logger = logging.getLogger(__name__)
 
@@ -39,8 +39,8 @@ def run():
     # Announce that we are starting up.
     logger.info(f'{loancalc.APP_NAME} {loancalc.APP_VERSION} - Starting up...')
 
-    # Launch into the main application run code
-    LoanCalc.run()
+    # Launch into the main application class
+    LoanCalcApp()
 
 
 if __name__ == '__main__':
