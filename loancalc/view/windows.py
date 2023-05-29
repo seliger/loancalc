@@ -17,6 +17,8 @@ class MainAppWindow(tk.Tk):
         super().__init__(*args, **kwargs)
         logger.info('Initializing main window...')
 
+        self.protocol("WM_DELETE_WINDOW", self.__on_close)
+
         self.wm_title(f'{loancalc.APP_NAME} {loancalc.APP_VERSION}')
 
         # Calculate geometry and position of the main window
@@ -65,6 +67,10 @@ class MainAppWindow(tk.Tk):
         logger.info(f'Child windows: {self.child_windows.keys()}')
         self.child_windows['loan_config'] = LoanConfigurationWindow(master=self)
 
+    def __on_close(self):
+        logger.info(f'Destroying {self.__class__.__name__}')
+        self.destroy()
+
 
 class LoanConfigurationWindow(tk.Toplevel):
     frames = {}
@@ -74,6 +80,8 @@ class LoanConfigurationWindow(tk.Toplevel):
         # https://www.digitalocean.com/community/tutorials/tkinter-working-with-classes
         super().__init__(*args, **kwargs)
         logger.info('Initializing main window...')
+
+        # self.protocol("WM_DELETE_WINDOW", self.__on_close)
 
         self.wm_title(f'{loancalc.APP_NAME} - Loan Parameters')
 
@@ -107,3 +115,7 @@ class LoanConfigurationWindow(tk.Toplevel):
                                    sticky='nsew',
                                    padx=10,
                                    pady=10)
+
+    def __on_close(self):
+        logger.info(f'Destroying {self.__class__.__name__}')
+        self.destroy()
