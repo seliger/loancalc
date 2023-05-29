@@ -19,7 +19,7 @@ class Container(tk.Frame):
                                                             text=widget['label'])
 
             if type(widget['widget']) is tk.Entry:
-                widget['widget'].config(textvariable=widget['value'])
+                self.widgets[widget['name']].config(textvariable=widget['value'])
 
             self.widgets[widget['name']].grid(row=cur_loc,
                                               column=0,
